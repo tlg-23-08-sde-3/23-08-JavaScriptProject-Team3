@@ -6,18 +6,34 @@ import {
     createRoutesFromElements,
     Route,
 } from "react-router-dom";
+
+/* Custom CSS */
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 
 // Components
 import { App } from "./routes/App";
+import { AuthContextProvider } from "./context/AuthContextProvider";
 import { Login } from "./routes/Login";
+import { Logout } from "./routes/Logout";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={<App />}>
-                {/* Anything Authenticated Wil Go Here */}
+            <Route
+                path="/"
+                element={
+                    <AuthContextProvider>
+                        <App />
+                    </AuthContextProvider>
+                }
+            >
                 <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
+
+                {/* Anything Authenticated Wil Go Here */}
+                
+
             </Route>
         </>
     )
