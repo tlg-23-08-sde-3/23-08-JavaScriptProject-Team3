@@ -1,0 +1,8 @@
+.signup-container {
+    display: grid;
+    width: 100%;
+
+    & h1 {
+        justify-self: center;
+    }
+}

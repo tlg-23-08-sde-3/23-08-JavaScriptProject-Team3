@@ -62,7 +62,7 @@ export const AuthContextProvider: React.FC<React.PropsWithChildren> = ({ childre
         setEmailInLocalStorage(email);
 
         // Take user to home screen after login
-        navigate("/");
+        navigate("/admin");
     };
 
     const logout = () => {
