@@ -8,14 +8,16 @@ import {
 } from "react-router-dom";
 
 /* Custom CSS */
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 // Components
 import { App } from "./routes/App";
 import { AuthContextProvider } from "./context/AuthContextProvider";
-import { Login } from "./routes/Login";
-import { Logout } from "./routes/Logout";
+import { Login } from "./routes/auth/Login";
+import { Logout } from "./routes/auth/Logout";
+import { Homepage } from "./routes/Homepage";
+import { ErrorPage } from './routes/ErrorPage';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -27,13 +29,13 @@ const router = createBrowserRouter(
                         <App />
                     </AuthContextProvider>
                 }
+                errorElement={<ErrorPage />}
             >
+                <Route path="/" element={<Homepage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
 
-                {/* Anything Authenticated Wil Go Here */}
-                
-
+                {/* Wrap authenticated pages in <ProtectedRoute /> Wrapper */}
             </Route>
         </>
     )

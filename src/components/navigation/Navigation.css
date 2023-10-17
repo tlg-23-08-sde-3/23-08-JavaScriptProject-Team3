@@ -1,0 +1,27 @@
+nav {
+    & a {
+        text-decoration: none;
+    }
+    .nav-title {
+        margin-left: 2em;
+
+        & a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+    }
+
+    .nav-sidebar {
+        display: flex;
+        gap: 1.2em;
+        margin-right: 1em;
+        margin-right: 1em;
+
+        & a {
+            color: rebeccapurple;
+            font-size: 1.1rem;
+            font-weight:500;
+        }
+    }
+}

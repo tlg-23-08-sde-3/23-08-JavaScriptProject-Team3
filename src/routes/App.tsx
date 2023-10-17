@@ -1,10 +1,13 @@
-import { Outlet } from 'react-router-dom';
-export const App = () => {
+import { Outlet } from "react-router-dom";
+import "./App.css";
 
+import { Navigation } from "../components/navigation/Navigation";
+
+export const App = () => {
     return (
-        <>
-            <h1>HomePage</h1>
+        <div className="container main-container">
+            <Navigation />
             <Outlet />
-        </>
+        </div>
     );
 };

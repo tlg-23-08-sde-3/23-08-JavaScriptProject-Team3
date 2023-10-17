@@ -1,0 +1,22 @@
+
+    .homepage-container {
+        display: grid;
+        justify-items: center;
+        gap: 1em;
+        margin-top: 1em;
+
+        & h1 {
+            /* color: rebeccapurple; */
+            font-size: 5rem;
+            color: var(--primary-color);
+            font-family: var(--wedding-font);
+            font-weight: 700;
+        }
+
+        .homepage-image-container {
+            & img {
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+    }
