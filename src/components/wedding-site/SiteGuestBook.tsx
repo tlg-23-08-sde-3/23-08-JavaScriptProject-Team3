@@ -1,34 +1,40 @@
 import "./SiteGuestBook.css";
 import { useState } from 'react';
 
-function Comments(commenter:string, theComment:string) {
-
+function Comments(commenter: string, theComment: string) {
     return (
         <>
-        <div style={{borderStyle:"solid"}}>
-            <p>From: {commenter}</p>
-            <p>{theComment}</p>
-        </div>
+            <div style={{ borderStyle: "solid" }}>
+                <p>From: {commenter}</p>
+                <p>{theComment}</p>
+            </div>
         </>
     );
-    
-};
+}
 
-const commentsArr:any[] = [];
+const commentsArr: JSX.Element[] = [];
 
 const response = window.fetch(`/whatever the comment route is`, {
-    method: 'GET',
-})
-response.then((res) => {
-    return res.json();
-})
-.then((allComments) => {
-    allComments.forEach((elm:any) => {
-        const commenter = elm.name;
-        const theComment = elm.comment;
-        commentsArr.push(Comments(commenter,theComment));
-    })
+    method: "GET",
 });
+
+interface Comment {
+    name: string;
+    comment: string;
+}
+
+// TODO: Uncomment after actual api endpoint has been added.
+// response
+//     .then((res) => {
+//         return res.json();
+//     })
+//     .then((allComments: Comment[]) => {
+//         allComments.forEach((elm) => {
+//             const commenter = elm.name;
+//             const theComment = elm.comment;
+//             commentsArr.push(Comments(commenter, theComment));
+//         });
+//     });
 
 export const SiteGuestBook = () => {
     const [commenter, setCommenter] = useState("");
@@ -51,7 +57,7 @@ export const SiteGuestBook = () => {
 
     return (
         <>
-            <h2>Sign our virtual Guest Book!</h2>
+            <h2 className="guest-book-title">Sign our virtual Guest Book!</h2>
 
             <form className="commentForm" onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label><br />
@@ -61,14 +67,15 @@ export const SiteGuestBook = () => {
             <input type="submit" />
             </form>
 
-            <h3>Comments:</h3>
-            <div className="commentContainer">
-               {commentsArr.map(Comment => Comment)}
-            </div>
+            <h3 className="guest-book-title">Comments:</h3>
+            <div className="commentContainer">{commentsArr.map((Comment) => Comment)}</div>
         </>
     );
 };
 
-//grab data from form
-//send data from form
-//reset form
+function sendComment() {
+    const formData = new FormData();
+    //grab data from form
+    //send data from form
+    //reset form
+}
