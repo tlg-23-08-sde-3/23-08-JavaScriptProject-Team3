@@ -1,10 +1,11 @@
 :root {
-   --wedding-font: 'Great Vibes', cursive; 
-   --primary-color: rgba(253, 126, 20, 0.9) ;
+    --wedding-font: "Great Vibes", cursive;
+    --primary-color: rgba(253, 126, 20, 0.9);
+    --h1-color: #032830;
 }
 
 body {
-    background: url("background.jpg");
+    background: url("/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;

@@ -38,14 +38,18 @@ const removeEmailFromLocalStorage = (): boolean => {
 };
 
 export const AuthContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-    const [email, setEmail] = useState<string | null>(null);
+    // Initial email set to either the email in localStorage or Null
+    const [email, setEmail] = useState<string | null>(getEmailFromLocalStorage());
     const navigate = useNavigate();
 
     // Get local logged-in email from localStorage if the page was refreshed
     // Runs once on page load
     useEffect(() => {
+
         const email = getEmailFromLocalStorage();
-        setEmail(email);
+        if (email) {
+            setEmail(email);
+        }
     }, []);
 
     // This function will be async eventually when we add server validations

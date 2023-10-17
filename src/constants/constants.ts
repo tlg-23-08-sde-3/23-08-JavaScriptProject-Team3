@@ -1,2 +1,2 @@
 /* Local Storage */
-export const LS_EMAIL = "wedding-email";
+export const LS_EMAIL = "weddingEmail";

@@ -1,0 +1,11 @@
+.wedding-page-container {
+    display: grid;
+    width: 100%;
+    justify-content: center;;
+    justify-items: center;
+    
+    .wedding-nav-items {
+        display: flex;
+        gap: 1em;
+    }
+}

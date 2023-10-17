@@ -1,0 +1,18 @@
+.admin-container {
+    .admin-page-title {
+        color: var(--h1-color);
+    }
+
+    .admin-items {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1em;
+
+        .admin-item {
+            & a {
+                text-decoration: none;
+                color: #087990;
+            }
+        }
+    }
+}

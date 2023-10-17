@@ -8,7 +8,7 @@ export const Navigation = () => {
                 <Link to="/">Elegant Weddings</Link>
             </div>
             <div className="nav-sidebar">
-                <NavLink to="/wedding">Manage Wedding</NavLink>
+                <NavLink to="/admin">Manage Wedding</NavLink>
                 <NavLink to="/login">Log In</NavLink>
                 <NavLink to="/signup">Sign Up</NavLink>
             </div>
