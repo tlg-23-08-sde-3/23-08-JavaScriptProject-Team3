@@ -1,7 +1,7 @@
 /* API Endpoint */
 const SERVER = "http://localhost:3000";
 
-const API = {
+export const API = {
     USER: `${SERVER}/auth`,
     WEDDING: `${SERVER}/wedding`,
     GALLERY: `${SERVER}/gallery`,
