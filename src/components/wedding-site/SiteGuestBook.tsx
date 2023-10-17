@@ -1,4 +1,5 @@
 import "./SiteGuestBook.css";
+import { useState } from 'react';
 
 function Comments(commenter: string, theComment: string) {
     return (
@@ -36,20 +37,34 @@ interface Comment {
 //     });
 
 export const SiteGuestBook = () => {
+    const [commenter, setCommenter] = useState("");
+    const [comment, setComment] = useState("");
+
+    const handleSubmit = () => {
+        //alert(`The name you entered was: ${commenter}`); //THIS WORKS
+        //alert(`The comment you entered was: ${comment}`);//THIS WORKS
+
+       window.fetch(`/whatever the comment route is`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json;charset=UTF-8',
+          },
+        body: JSON.stringify({"name":commenter, "comment":comment})
+        })
+
+
+    }
+
     return (
         <>
             <h2 className="guest-book-title">Sign our virtual Guest Book!</h2>
 
-            <form className="commentForm">
-                <label htmlFor="name">Name:</label>
-                <br />
-                <input type="text" />
-                <br />
-                <label htmlFor="comment">Comment:</label>
-                <br />
-                <textarea />
-                <br />
-                <input type="submit" onClick={sendComment} />
+            <form className="commentForm" onSubmit={handleSubmit}>
+            <label htmlFor="name">Name:</label><br />
+            <input type="text" value={commenter} onChange={(e) => setCommenter(e.target.value)}/><br />
+            <label htmlFor="comment">Comment:</label><br />
+            <textarea value={comment} onChange={(e) => setComment(e.target.value)}/><br />
+            <input type="submit" />
             </form>
 
             <h3 className="guest-book-title">Comments:</h3>
