@@ -3,7 +3,8 @@ import "./SitePhotos.css";
 export const SitePhotos = () => {
     return (
         <>
-            <h1>Site Photos</h1>
+            <h1>Our Photos</h1>
+            <div className="photoContainer"></div>
         </>
     );
 };
