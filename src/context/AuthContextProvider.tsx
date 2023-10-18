@@ -43,6 +43,7 @@ export const AuthContextProvider: React.FC<React.PropsWithChildren> = ({ childre
 
             data = await response.json();
         } catch (e) {
+            alert("Error logging in, check credentials!")
             console.error(`Error fetching ${signInApi}: `, e);
             return;
         }

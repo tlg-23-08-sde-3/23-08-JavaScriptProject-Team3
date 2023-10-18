@@ -5,7 +5,7 @@ export const Admin = () => {
     return (
         <div className=" admin-container">
             <div className="admin-page-title">
-                <h1>His and Her Portal</h1>
+                <h1>Wedding Admin Portal</h1>
             </div>
             <div className="admin-items fs-3">
                 <div className="admin-item">
