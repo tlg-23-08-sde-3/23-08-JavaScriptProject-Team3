@@ -18,8 +18,10 @@ export const WeddingSite = () => {
                 <div className="wedding-nav-item"><NavLink to={`/site/${id}/guestbook`}>Guest Book </NavLink></div>
             </div>
 
-            <Outlet />
+            <Outlet context={id}/>
 
         </div>
     );
 };
+
+//todo: come back here after I finish API

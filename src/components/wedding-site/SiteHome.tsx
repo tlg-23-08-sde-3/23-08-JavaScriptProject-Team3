@@ -1,15 +1,34 @@
 import "./SiteHome.css";
+import {API} from "../../constants/constants"
+import {useOutletContext} from "react-router-dom"
+import { useEffect, useState } from "react";
 
 export const SiteHome = () => {
+
+
+    const [siteHomeState, setSiteHomeState] = useState({story:"", weddate:"", venue:""}) 
+
+    const id = useOutletContext();
+    
+    useEffect( () => {
+    fetch(`${API.WEDDING}/${id}`)
+    .then((res) => res.json())
+    .then((obj) => {
+        setSiteHomeState(() => ({story:obj.story, weddate:obj.date, venue:obj.venue}))
+    });
+    }, [])
+
     return (
         <>
             <h2 className="sitehome-h2">Our Love Story</h2>
-            <p className="storyContainer">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro neque incidunt ut fugiat corporis commodi dicta architecto voluptatem nemo. Commodi perspiciatis animi ipsam laboriosam doloribus aliquid assumenda fugiat illum. Molestiae.</p>
+            <p className="storyContainer">{siteHomeState.story}</p>
             <h2 className="sitehome-h2">Wedding Date:</h2>
-            <h4 className="dateContainer">February 30th, 2020</h4>
+            <h4 className="dateContainer">{siteHomeState.weddate}</h4>
             <h2 className="sitehome-h2">Venue:</h2>
-            <h4 className="">The Heavenly Dominion</h4>
+            <h4 className="">{siteHomeState.venue}</h4>
         </>
     );
 };
 
+
+//todo: make return work
