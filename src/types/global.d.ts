@@ -5,7 +5,34 @@
 
 interface IAuthUser {
     email: string | null;
-    login: (email: string) => Promise<void>;
+    site: string | null;
+    login: (email: string, password: string) => Promise<void>;
     logout: () => void;
 }
 
+interface ILocalStorageAuthInfo {
+    email: string | null;
+    site: string | null;
+}
+
+/*
+ * Global Types for API
+ */
+
+interface IApiUser {
+    email?: string;
+    password?: string;
+    url?: string;
+    error?: string;
+}
+
+interface IApiWedding {
+    _id?: string;
+    name1?: string;
+    name2?: string;
+    data?: string;
+    venue?: string;
+    image?: string;
+    story?: string;
+    error?: string;
+}

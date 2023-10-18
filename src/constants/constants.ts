@@ -8,7 +8,12 @@ export const API = {
     GUEST: `${SERVER}/guest`,
     REGISTRY: `${SERVER}/registry`,
     COMMENTS: `${SERVER}/comments`,
+    SITE: `${SERVER}/site`,
 } as const;
 
 /* Local Storage Constants */
-export const LS_EMAIL = "weddingEmail";
+export const LOCAL_STORAGE = {
+    EMAIL: "email",
+    SITE: "site",
+} as const;
+
