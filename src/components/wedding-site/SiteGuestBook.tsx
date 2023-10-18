@@ -72,10 +72,3 @@ export const SiteGuestBook = () => {
         </>
     );
 };
-
-function sendComment() {
-    const formData = new FormData();
-    //grab data from form
-    //send data from form
-    //reset form
-}
