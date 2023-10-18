@@ -3,6 +3,9 @@
     DO NOT USE EXPORT AND IMPORT
 */
 
+/*
+ * Authentication Types
+ */
 interface IAuthUser {
     email: string | null;
     site: string | null;
@@ -35,4 +38,14 @@ interface IApiWedding {
     image?: string;
     story?: string;
     error?: string;
+}
+
+/**
+ * Guests Portal
+ */
+
+export interface IGuest {
+    name: string;
+    attending: "yes" | "no" | "pending";
+    plusOne: "yes" | "no";
 }
