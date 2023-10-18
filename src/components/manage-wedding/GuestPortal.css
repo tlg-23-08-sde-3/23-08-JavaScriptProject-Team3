@@ -1,0 +1,25 @@
+.guest-portal-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1em;
+    margin-top: 1em;
+
+    & table tr td,
+    & table tr th {
+        background-color: rgba(242, 245, 228, 0.3) !important;
+    }
+
+    .guest-portal-control-buttons {
+        display: flex;
+        gap: 1em;
+        justify-self: start;
+        margin-left: 0.3em;
+    }
+
+    .guest-stats {
+        display: flex;
+        gap: 1em;
+    }
+}
+
