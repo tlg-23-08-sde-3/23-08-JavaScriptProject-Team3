@@ -5,7 +5,7 @@ export const API = {
     USER: `${SERVER}/auth`,
     WEDDING: `${SERVER}/wedding`,
     GALLERY: `${SERVER}/gallery`,
-    GUEST: `${SERVER}/guest`,
+    GUEST: `${SERVER}/guests`,
     REGISTRY: `${SERVER}/registry`,
     COMMENTS: `${SERVER}/comments`,
     SITE: `${SERVER}/site`,

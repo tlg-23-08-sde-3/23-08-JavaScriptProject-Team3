@@ -23,7 +23,7 @@ export const Navigation = () => {
                         <NavLink to="/login">Log In</NavLink>
                     </>
                 ) : (
-                    <button onClick={logoutHandler}>Log Out</button>
+                    <button className="btn btn-outline-secondary" onClick={logoutHandler}>Log Out</button>
                 )}
             </div>
         </nav>
