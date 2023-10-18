@@ -1,74 +1,76 @@
 import { useState, useEffect } from "react";
 import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
-import { LS_EMAIL } from "../constants/constants";
-
-const getEmailFromLocalStorage = (): string | null => {
-    let email = null;
-
-    try {
-        email = localStorage.getItem(LS_EMAIL);
-    } catch (err) {
-        console.error("Error getting email from localStorage: ", err);
-    }
-
-    return email;
-};
-
-const setEmailInLocalStorage = (email: string): boolean => {
-    try {
-        localStorage.setItem(LS_EMAIL, email);
-        return true;
-    } catch (err) {
-        console.error("Error setting email in localStorage: ", err);
-    }
-
-    return false;
-};
-
-const removeEmailFromLocalStorage = (): boolean => {
-    try {
-        localStorage.removeItem(LS_EMAIL);
-        return true;
-    } catch (err) {
-        console.error("Error removing email from localStorage: ", err);
-    }
-
-    return false;
-};
+import { API } from "../constants/constants";
+import {
+    getAuthFromLocalStorage,
+    setAuthInLocalStorage,
+    removeAuthFromLocalStorage,
+} from "./LocalStorageAuthUtils";
 
 export const AuthContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     // Initial email set to either the email in localStorage or Null
-    const [email, setEmail] = useState<string | null>(getEmailFromLocalStorage());
+    const [auth, setAuth] = useState<ILocalStorageAuthInfo>(getAuthFromLocalStorage());
     const navigate = useNavigate();
 
     // Get local logged-in email from localStorage if the page was refreshed
     // Runs once on page load
     useEffect(() => {
-
-        const email = getEmailFromLocalStorage();
+        const email = getAuthFromLocalStorage();
         if (email) {
-            setEmail(email);
+            setAuth(email);
         }
     }, []);
 
-    // This function will be async eventually when we add server validations
-    const login = async (email: string) => {
-        // TODO: Validate user with MongoDB database before calling setEmail()
-        setEmail(email);
+    const login = async (email: string, password: string) => {
+        const fetchBody = { email, password };
+        const signInApi = `${API.USER}/signin`;
 
-        // Save to Local Storage
-        // TODO: Validate user with MongoDB database before calling setEmailInLocalStorage
-        setEmailInLocalStorage(email);
+        let data: IApiUser = {};
 
-        // Take user to home screen after login
+        try {
+            const response = await fetch(signInApi, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(fetchBody),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+
+            data = await response.json();
+        } catch (e) {
+            console.error(`Error fetching ${signInApi}: `, e);
+            return;
+        }
+
+        if (data.error) {
+            alert(`Error Logging in: ${data.error}`);
+            console.error("Error: ", data.error);
+            return;
+        }
+
+        if (!data.email || !data.url) {
+            alert("Empty email or url received from server");
+            console.error("Empty email or url received from server");
+            return;
+        }
+        setAuth({ email: data.email, site: data.url });
+        setAuthInLocalStorage(data.email, data.url);
         navigate("/admin");
     };
 
     const logout = () => {
-        setEmail(null);
-        removeEmailFromLocalStorage();
+        setAuth({ email: null, site: null });
+        removeAuthFromLocalStorage();
     };
 
-    return <AuthContext.Provider value={{ email, login, logout }}>{children}</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider value={{ email: auth.email, site: auth.site, login, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };

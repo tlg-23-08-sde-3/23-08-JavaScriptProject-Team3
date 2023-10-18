@@ -1,7 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
-import "./Navigation.css"
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import "./Navigation.css";
 
 export const Navigation = () => {
+    const { email, site, logout } = useContext(AuthContext);
+
+    const logoutHandler = () => {
+        logout();
+    };
+
     return (
         <nav className="navbar bg-body-secondary">
             <div className="nav-title">
@@ -9,8 +17,14 @@ export const Navigation = () => {
             </div>
             <div className="nav-sidebar">
                 <NavLink to="/admin">Manage Wedding</NavLink>
-                <NavLink to="/login">Log In</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
+                {!email || !site ? (
+                    <>
+                        <NavLink to="/signup">Sign Up</NavLink>
+                        <NavLink to="/login">Log In</NavLink>
+                    </>
+                ) : (
+                    <button onClick={logoutHandler}>Log Out</button>
+                )}
             </div>
         </nav>
     );
