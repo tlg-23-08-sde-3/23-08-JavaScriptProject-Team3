@@ -30,7 +30,7 @@ interface IApiWedding {
     _id?: string;
     name1?: string;
     name2?: string;
-    data?: string;
+    date?: string;
     venue?: string;
     image?: string;
     story?: string;
