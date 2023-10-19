@@ -9,16 +9,16 @@ export const Admin = () => {
             </div>
             <div className="admin-items fs-3">
                 <div className="admin-item">
-                    <Link to="/admin/wedding">Manage Your Website &gt;</Link>
+                    <Link to="/admin/wedding">Manage <strong>Website</strong></Link>
                 </div>
                 <div className="admin-item">
-                    <Link to="/admin/photos">Manage Your Photos &gt;</Link>
+                    <Link to="/admin/photos">Manage <strong>Photos</strong></Link>
                 </div>
                 <div className="admin-item">
-                    <Link to="/admin/guests">Manage Your Guest List &gt;</Link>
+                    <Link to="/admin/guests">Manage <strong>Guest List</strong></Link>
                 </div>
                 <div className="admin-item">
-                    <Link to="/admin/registry">Manage Your Registry &gt;</Link>
+                    <Link to="/admin/registry">Manage <strong>Registry</strong></Link>
                 </div>
             </div>
         </div>

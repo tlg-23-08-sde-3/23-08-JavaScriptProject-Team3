@@ -1,5 +1,9 @@
 /* API Endpoint */
-const SERVER = "http://localhost:3000";
+/* Development Server */
+// const SERVER = "http://localhost:3000";
+
+/* Production Server */
+const SERVER = "https://wedding-app-3nu8.onrender.com";
 
 export const API = {
     USER: `${SERVER}/auth`,
