@@ -6,7 +6,7 @@ import { useOutletContext } from "react-router-dom";
 function Picture(url: string, label: string) {
     return (
         <>
-        <div className="carousel-item active" >
+        <div className="carousel-item" >
             <img src={url} className="d-block w-100" style={{maxHeight:"700px", objectFit:"contain"}} alt={label}/>
         </div>
         </>
@@ -42,7 +42,10 @@ export const SitePhotos = () => {
             <h1>Our Photos</h1>
             <div id="carouselExample" className="carousel slide">
                 <div className="carousel-inner">
-                {dataState.map((item) => Picture(item.url, item.label))}
+                    <div className="carousel-item active" >
+                        <img src="../../gallerycover.jpg" className="d-block w-100" style={{maxHeight:"700px", objectFit:"contain"}} alt="album cover"/>
+                    </div>
+                    {dataState.map((item) => Picture(item.url, item.label))}
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
