@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useContext, useCallback } from "react";
 import "./GuestPortal.css";
-import { reducer } from "./reducers/GuestReducer";
+import { guestReducer } from "./reducers/GuestReducer";
 import { GuestRow } from "./GuestRow";
 import { AuthContext } from "../../context/AuthContext";
 import { API } from "../../constants/constants";
@@ -14,7 +14,7 @@ export const GuestPortal = () => {
 
     const initialState: IGuest[] = [];
 
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(guestReducer, initialState);
     const { site } = useContext(AuthContext);
 
     
