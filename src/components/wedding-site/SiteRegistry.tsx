@@ -40,7 +40,7 @@ export const SiteRegistry = () => {
             }
             setDataState(data.registry);
         })
-    }, []);
+    }, [api]);
 
     return (
         <>

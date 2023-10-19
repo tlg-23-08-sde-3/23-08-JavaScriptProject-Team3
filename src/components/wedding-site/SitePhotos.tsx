@@ -35,7 +35,7 @@ export const SitePhotos = () => {
             }
             setDataState(data.photos);
         } )
-    }, []);
+    }, [api]);
 
     return (
         <>
