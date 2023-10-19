@@ -58,5 +58,8 @@ export const router = createBrowserRouter(
                 <Route path="guestbook" element={<SiteGuestBook />} />
             </Route>
         </>
-    )
+    ),
+    {
+        basename: "/23-08-JavaScriptProject-Team3/dist/",
+    }
 );
