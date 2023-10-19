@@ -1,5 +1,7 @@
 import "./SiteGuestBook.css";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {useOutletContext} from "react-router-dom"
+import {API} from "../../constants/constants"
 
 function Comments(commenter: string, theComment: string) {
     return (
@@ -12,46 +14,67 @@ function Comments(commenter: string, theComment: string) {
     );
 }
 
-const commentsArr: JSX.Element[] = [];
-
-const response = window.fetch(`/whatever the comment route is`, {
-    method: "GET",
-});
-
-interface Comment {
-    name: string;
-    comment: string;
-}
-
-// TODO: Uncomment after actual api endpoint has been added.
-// response
-//     .then((res) => {
-//         return res.json();
-//     })
-//     .then((allComments: Comment[]) => {
-//         allComments.forEach((elm) => {
-//             const commenter = elm.name;
-//             const theComment = elm.comment;
-//             commentsArr.push(Comments(commenter, theComment));
-//         });
-//     });
-
 export const SiteGuestBook = () => {
+
+    //regular constants
+    //const commentsArr: JSX.Element[] = [];//
+    const id = useOutletContext();
+
+    //states
     const [commenter, setCommenter] = useState("");
     const [comment, setComment] = useState("");
+    const [commentData, setCommentData] = useState("");
+    const [commentsArr, setCommentsArr] = useState([]);
+
+    //interfaces
+    interface Comment {
+        name: string;
+        comment: string;
+    }
+
+    useEffect( () => {
+    const response = window.fetch(`${API.COMMENTS}/${id}`);
+    response
+    .then((res) => {
+        return res.json();
+    })
+      .then( (obj) => {
+        setCommentsArr([]);
+        let theComments = obj.comments;
+        theComments.forEach((elm:Comment) => {
+            
+            //commentsArr.push(Comments(elm.name, elm.comment))
+            
+
+
+
+        })
+    });
+    }, [])
+
+
 
     const handleSubmit = () => {
-        //alert(`The name you entered was: ${commenter}`); //THIS WORKS
-        //alert(`The comment you entered was: ${comment}`);//THIS WORKS
+        alert(`The name you entered was: ${commenter}`); //THIS WORKS
+        alert(`The comment you entered was: ${comment}`);//THIS WORKS
 
-       window.fetch(`/whatever the comment route is`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json;charset=UTF-8',
-          },
-        body: JSON.stringify({"name":commenter, "comment":comment})
+        //get the existing comment obj for this site and save it
+        useEffect( () => {
+        const resp = window.fetch(`${API.COMMENTS}/${id}`);
+        resp
+        .then((res) => {
+            return res.json();
         })
+          .then( data => {
+            setCommentData(data)
+        });
+        }, [])
+        //put the new commenter and comment Comment into the array in that obj
 
+        console.log(commentData);
+        
+        
+        //send back the full obj in the body of a post.
 
     }
 
@@ -69,6 +92,7 @@ export const SiteGuestBook = () => {
 
             <h3 className="guest-book-title">Comments:</h3>
             <div className="commentContainer">{commentsArr.map((Comment) => Comment)}</div>
+        
         </>
     );
 };
