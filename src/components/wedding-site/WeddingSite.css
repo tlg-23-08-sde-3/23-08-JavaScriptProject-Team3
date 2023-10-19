@@ -1,14 +1,39 @@
 .wedding-page-container {
     display: grid;
     width: 100%;
-    justify-content: center;;
+    justify-content: center;
     justify-items: center;
-    
+
     .wedding-nav-items {
+        background-color: rgba(174, 214, 227, 0.5);
+        padding: 0.5em 1em;
         display: flex;
-        gap: 1em;
+        gap: 1.9em;
+        border: 1px solid rgba(4, 54, 74, 0.2);
+        border-radius: 0.5em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+        & a {
+            font-size: large;
+            font-weight: 500;
+            color: rgba(4, 54, 74, 0.9);
+            text-decoration: none;
+            transform: all 2s;
+
+            &.active {
+                padding-bottom: 0.1em;
+                border-bottom: 0.1em solid rgba(4, 54, 74, 0.8);
+            }
+
+            &:hover {
+                color: rgb(44, 11, 14);
+                
+            }
+        }
     }
 }
+
 
 .site-header {
     font-family: 'Great Vibes';
