@@ -1,1 +1,19 @@
- 
+ .item-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+ }
+
+ .card {
+    display: flex;
+    margin: 10px;
+   font-family: 'Red Hat Display', sans-serif;;
+ }
+
+ .custom {
+   background-color: #BBDCE8;
+   color: #2D5969;
+   border-color: #BBDCE8;
+   font-weight: bold;
+ }
+ /* style={{backgroundColor: "#BBDCE8", color: "#2D5969", borderColor:"#BBDCE8"}} */

@@ -39,7 +39,7 @@ export const SitePhotos = () => {
 
     return (
         <>
-            <h1>Our Photos</h1>
+            <h1 style={{fontFamily: "'Playfair Display', serif"}}>Our Photos</h1>
             <div id="carouselExample" className="carousel slide">
                 <div className="carousel-inner">
                     <div className="carousel-item active" >

@@ -6,9 +6,9 @@ import {API} from "../../constants/constants"
 function Comment(commenter: string, theComment: string) {
     return (
         <>
-            <div style={{ borderStyle: "solid", borderColor: "#F4CEDD", color: "#276B80", backgroundColor: "#DDECE8"}}>
-                <p>From: {commenter}</p>
-                <p>{theComment}</p>
+            <div className="commentClass">
+                <p className="commentWords">{theComment}</p>
+                <p className="commentName" style={{fontFamily:"'Red Hat Display', sans-serif"}}>From: {commenter}</p>
             </div>
         </>
     );
@@ -71,10 +71,10 @@ export const SiteGuestBook = () => {
             <h2 className="guest-book-title">Sign our virtual Guest Book!</h2>
 
             <form className="commentForm" onSubmit={handleSubmit}>
-                <label htmlFor="name">Name:</label><br />
+                <label className="commentName" htmlFor="name">Name:</label><br />
                 <input type="text" onChange={(e) => setName(e.target.value)}/><br />
-                <label htmlFor="comment">Comment:</label><br />
-                <textarea onChange={(e) => setComment(e.target.value)}/><br />
+                <label className="commentName" htmlFor="comment">Comment:</label><br />
+                <textarea className="textareaclass" onChange={(e) => setComment(e.target.value)}/><br />
                 <input type="submit" />
             </form>
 
