@@ -36,7 +36,7 @@ export const SiteGuestBook = () => {
             }
             setDataState(data.comments);
         })
-    }, []);
+    }, [api]);
 
 
     //Stuff that deals with updating the database
