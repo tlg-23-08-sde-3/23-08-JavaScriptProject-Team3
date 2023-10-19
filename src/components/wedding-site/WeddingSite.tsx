@@ -1,13 +1,26 @@
 import "./WeddingSite.css";
 import { useParams, NavLink, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {API} from "../../constants/constants"
 
 export const WeddingSite = () => {
     const { id } = useParams();
 
+    const [siteHeaderState, setSiteHeaderState] = useState({name1:"", name2:"", date:""})
+
+    useEffect( () => {
+        fetch(`${API.WEDDING}/${id}`)
+        .then((res) => res.json())
+        .then((obj) => {
+            setSiteHeaderState(() => ({name1:obj.name1, name2:obj.name2, date:obj.date}))
+        });
+        }, [])
+
+
     return (
         <div className="wedding-page-container">
             <div className="wedding-page-title">
-                <h1>Wedding Page for {id}</h1>
+                <h1 className="site-header">{siteHeaderState.name1} & {siteHeaderState.name2}</h1>
             </div>
             <div className="wedding-nav-items">
                 <div className="wedding-nav-item">
