@@ -10,7 +10,7 @@ function Item(item : string, photo : string, url : string) {
             <img className="card-img-top" src={photo} alt={item}/>
             <div className="card-body">
                 <h5 className="card-title">{item}</h5>
-                <a href={url} className="btn btn-primary">Click to purchase!</a>
+                <a href={url} className="btn btn-primary custom" >Click to purchase!</a>
             </div>
         </div> 
         </>
@@ -44,7 +44,7 @@ export const SiteRegistry = () => {
 
     return (
         <>
-           <h1>Our Registry</h1>
+           <h1 style={{fontFamily: "'Playfair Display', serif"}}>Our Registry</h1>
            <div className="item-container">
             {dataState.map((obj) => Item(obj.item, obj.photo, obj.url))}
             </div> 

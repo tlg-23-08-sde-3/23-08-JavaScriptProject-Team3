@@ -67,7 +67,7 @@ export const SiteRsvp = () => {
 
     return (
         <>
-            <h1 className="rsvp-h1">RSVP</h1>
+            <h1 className="rsvp-h1" style={{fontFamily: "'Playfair Display', serif"}}>RSVP</h1>
 
             <form className="rsvp-form" onSubmit={handleSubmit}>
                 {/* Full Name */}
