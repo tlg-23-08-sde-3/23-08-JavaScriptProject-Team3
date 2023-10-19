@@ -46,6 +46,12 @@ interface IApiGuests {
     error?: string;
 }
 
+// Single guest update API will only send whether the guest was updated or not (info), or guest not found (error).
+interface IApiSingleGuestUpdate {
+    info: string;
+    error: string;
+}
+
 interface IApiGallery {
     _id?: string;
     photos: IGalleryItem[];
