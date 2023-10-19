@@ -29,7 +29,7 @@ export const SitePhotos = () => {
                 console.log("Error while getting data", data.error);
                 return;
             }
-            setDataState(data.photos)
+            setDataState(data.photos);
         } )
     }, []);
 
