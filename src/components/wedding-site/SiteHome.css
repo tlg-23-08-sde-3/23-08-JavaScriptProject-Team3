@@ -1,10 +1,18 @@
 .sitehome-h2 {
     padding-top: 20px;
     padding-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+
 }
 
 p.storyContainer {
     padding-left: 10em;
     padding-right: 10em;
     margin-top: 10px;
+    font-size: x-large;
+}
+
+.storyContainer, .dateContainer, .venueContainer {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: xx-large;
 }

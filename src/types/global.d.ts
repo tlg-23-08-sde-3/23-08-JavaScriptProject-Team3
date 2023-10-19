@@ -58,6 +58,18 @@ interface IApiGallery {
     error?: string;
 }
 
+interface IApiComments {
+    _id?: string;
+    comments: IComment[];
+    error?: string;
+}
+
+interface IComment {
+    _id?: string;
+    name: string;
+    comment: string;
+}
+
 interface IApiRegistry {
     _id?: string;
     registry: IRegistry[];
