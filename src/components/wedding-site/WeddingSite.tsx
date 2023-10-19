@@ -14,7 +14,7 @@ export const WeddingSite = () => {
         .then((obj) => {
             setSiteHeaderState(() => ({name1:obj.name1, name2:obj.name2, date:obj.date}))
         });
-        }, [])
+        }, [id])
 
 
     return (
