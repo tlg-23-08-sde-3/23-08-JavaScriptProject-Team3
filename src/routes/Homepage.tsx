@@ -12,7 +12,7 @@ export const Homepage = () => {
                 <h1 className="homepage-card-heading">All-In-One Wedding Website Builder</h1>
 
                 <div className="homepage-card-details">
-                    <p>
+                    <div className="homepage-pitch">
                         With so much to do before your wedding day, you need a wedding website that
                         gets things done. See how an <strong>Elegant Weddings</strong> website can
                         simplify your wedding planning.{" "}
@@ -26,7 +26,7 @@ export const Homepage = () => {
                                 Login Here
                             </Link>
                         </p>
-                    </p>
+                    </div>
 
                     <div className="homepage-card-image">
                         <img src="website_builder.jpg" alt="all in one website builder" />
@@ -53,7 +53,7 @@ export const Homepage = () => {
             </div>
 
             <footer className="homepage-footer">
-                copyright © 
+                <p>copyright © 2023 Elegant Weddings, Inc. All right reserved </p>
             </footer>
         </div>
     );
