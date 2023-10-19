@@ -1,4 +1,4 @@
-export const guestReducer = (state: IGuest[], action: GuestAction): IGuest[] => {
+export const registryReducer = (state: IRegistry[], action: RegistryAction): IRegistry[] => {
     switch (action.type) {
         case "fetch-data":
             return [...action.newState];
@@ -6,18 +6,19 @@ export const guestReducer = (state: IGuest[], action: GuestAction): IGuest[] => 
         case "add-row":
             return [...state, { ...action.payload }];
 
-        case "update-name":
-            state[action.rowId]["name"] = action.newName;
+        case "update-item":
+            state[action.rowId]["item"] = action.newItem;
             return [...state];
 
-        case "update-attending": {
-            state[action.rowId]["attending"] = action.newStatus;
+        case "update-url": {
+            state[action.rowId]["url"] = action.newUrl;
             return [...state];
         }
 
-        case "update-plusOne":
-            state[action.rowId]["plusOne"] = action.checked ? "yes" : "no";
+        case "update-photo": {
+            state[action.rowId]["photo"] = action.newPhoto;
             return [...state];
+        }
 
         case "delete-row":
             return state.filter((_, idx) => idx !== action.rowId);
