@@ -1,27 +1,22 @@
-.rsvp-h1 {
-    padding-top: 20px;
-    padding-bottom: 10px;
+.rsvp-form {
+    max-width: 400px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.1em;
+
+    & button[type="submit"] {
+        align-self: center;
+        margin-bottom: 1em;
+    }
+
+    --checkbox-size: 1.3em;
+
+    & input[type="checkbox"],
+    & input[type="radio"] {
+        height: var(--checkbox-size);
+        width: var(--checkbox-size);
+        margin-right: 10px;
+        border: 1px solid grey;
+    }
 }
 
-.rsvp-p {
-    font-size: large;
-    width: 750px;
-    padding-left: 200px;
-    padding-right: 200px;
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
-
-.rsvp-label {
-    font-size: x-large;
-}
-
-.rsvp-input[type=checkbox] {
-    height:20px;
-    width:20px;
-}
-
-.rsvp-input {
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
